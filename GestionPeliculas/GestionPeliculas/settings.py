@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'GestionPeliculasDjango',
         'USER': 'root',
-        'PASSWORD': 'admin',
+        'PASSWORD': '1234',
         'HOST': 'localhost',    
         'PORT': '3306',
     }

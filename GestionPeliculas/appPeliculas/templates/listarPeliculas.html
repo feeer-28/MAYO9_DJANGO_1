@@ -1,0 +1,30 @@
+<table class="table table-bordered w-75" style="margin: 0 auto">
+  <thead>
+    <tr>
+      <th>Protagonista</th>
+      <th>Duración</th>
+      <th>Resumen</th>
+      <th>Foto</th>
+      <th>Género</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in peliculas %}
+    <tr>
+      <td>{{ p.pelProtagonista }}</td>
+      <td>{{ p.pelDuracion }}</td>
+      <td>{{ p.pelResumen }}</td>
+      <td class="text-center">
+        <img src="/media/{{ p.pelFoto }}" alt="Foto de {{ p.pelTitulo }}" width="50" height="50">
+      </td>
+      <td>{{ p.pelGenero.genNombre }}</td>
+      <td class="text-center">
+        <a href="/consultarPelicula/{{ p.id }}" class="fa fa-edit text-warning" title="Editar"></a>
+        <i class="fa fa-trash text-danger" title="Eliminar"
+           onclick="eliminarPelicula('{{ p.id }}')"></i>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

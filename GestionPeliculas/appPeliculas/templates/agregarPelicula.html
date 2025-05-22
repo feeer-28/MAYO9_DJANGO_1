@@ -1,0 +1,33 @@
+<body>
+    <div class="container">
+        <h3>AGREGAR PELÍCULA</h3>
+        <form action="/agregarPelicula" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div>
+                <label for="txtCodigo" class="fw-bold">Código:</label>
+                <input type="text" name="txtCodigo" id="" class="form-control">
+            </div>
+
+            <div>
+                <label for="txtTitulo" class="fw-bold">Título:</label>
+                <input type="text" name="txtTitulo" id="" class="form-control">
+            </div>
+
+            <div>
+                <label for="txtProtagonista" class="fw-bold">Protagonista:</label>
+                <input type="text" name="txtProtagonista" id="" class="form-control">
+            </div>
+
+            <div>
+                <label for="txtDuracion" class="fw-bold">Duración:</label>
+                <input type="number" name="txtDuracion" id="" class="form-control">
+            </div>
+
+            <div>
+                <label for="txtResumen" class="fw-bold">Resumen:</label>
+                <textarea name="txtResumen" id="" cols="30" rows="5" class="form-control"></textarea>
+            </div>
+        </form>
+    </div>
+</body>

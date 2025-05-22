@@ -22,7 +22,15 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('vistaAgregarGenero/', views.vistaAgregarGenero),
     path('agregarGenero/', views.agregarGenero),
+    path('listarPeliculas/', views.listarPeliculas),
+    path('agregarPelicula/', views.agregarPelicula),
+    path('vistaListarPeliculas/', views.vistaListarPeliculas),
+    path('vistaAgregarPelicula/', views.vistaAgregarPelicula),
+    path('consultarPelicula/<int:id>/', views.consultarPeliculaPorId),
+    path('actualizarPelicula/', views.actualizarPelicula),
+    path('eliminarPelicula/<int:id>/', views.eliminarPelicula),
 ]
 
 if settings.DEBUG:
