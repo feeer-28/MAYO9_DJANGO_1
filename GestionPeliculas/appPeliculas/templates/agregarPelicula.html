@@ -1,33 +1,58 @@
-<body>
+<!-- agregarPelicula.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Película</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+{% include 'encabezado.html'%}
+<body style="background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); min-height: 100vh;">
     <div class="container">
-        <h3>AGREGAR PELÍCULA</h3>
-        <form action="/agregarPelicula" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            
-            <div>
-                <label for="txtCodigo" class="fw-bold">Código:</label>
-                <input type="text" name="txtCodigo" id="" class="form-control">
+        <div class="card shadow mt-5 mx-auto" style="max-width: 500px;">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">Agregar Película</h3>
+                <form action="/agregarPelicula/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="txtCodigo" class="form-label fw-bold">Código:</label>
+                        <input type="text" name="txtCodigo" id="txtCodigo" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtTitulo" class="form-label fw-bold">Título:</label>
+                        <input type="text" name="txtTitulo" id="txtTitulo" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtProtagonista" class="form-label fw-bold">Protagonista:</label>
+                        <input type="text" name="txtProtagonista" id="txtProtagonista" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtDuracion" class="form-label fw-bold">Duración:</label>
+                        <input type="number" name="txtDuracion" id="txtDuracion" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtResumen" class="form-label fw-bold">Resumen:</label>
+                        <textarea name="txtResumen" id="txtResumen" cols="30" rows="3" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cbGenero" class="form-label fw-bold">Género:</label>
+                        <select name="cbGenero" id="cbGenero" class="form-control" required>
+                            {% for g in generos %}
+                                <option value="{{ g.id }}">{{ g.genNombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fileFoto" class="form-label fw-bold">Foto:</label>
+                        <input type="file" name="fileFoto" id="fileFoto" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Agregar Película</button>
+                    {% if mensaje %}
+                        <div class="alert alert-info mt-3">{{ mensaje }}</div>
+                    {% endif %}
+                </form>
             </div>
-
-            <div>
-                <label for="txtTitulo" class="fw-bold">Título:</label>
-                <input type="text" name="txtTitulo" id="" class="form-control">
-            </div>
-
-            <div>
-                <label for="txtProtagonista" class="fw-bold">Protagonista:</label>
-                <input type="text" name="txtProtagonista" id="" class="form-control">
-            </div>
-
-            <div>
-                <label for="txtDuracion" class="fw-bold">Duración:</label>
-                <input type="number" name="txtDuracion" id="" class="form-control">
-            </div>
-
-            <div>
-                <label for="txtResumen" class="fw-bold">Resumen:</label>
-                <textarea name="txtResumen" id="" cols="30" rows="5" class="form-control"></textarea>
-            </div>
-        </form>
+        </div>
     </div>
 </body>
+</html>

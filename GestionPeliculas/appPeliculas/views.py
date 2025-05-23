@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import Error
 from appPeliculas.models import Pelicula, Genero
 from django.http import JsonResponse
@@ -114,4 +114,4 @@ def eliminarPelicula(request, id):
         mensaje = str(error)
     
     retorno = {"mensaje": mensaje}
-    return JsonResponse(retorno)
+    return redirect('/listarPeliculas/')

@@ -21,7 +21,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('inicio', views.inicio),
+    path('', views.inicio),
     path('vistaAgregarGenero/', views.vistaAgregarGenero),
     path('agregarGenero/', views.agregarGenero),
     path('listarPeliculas/', views.listarPeliculas),
@@ -31,6 +32,7 @@ urlpatterns = [
     path('consultarPelicula/<int:id>/', views.consultarPeliculaPorId),
     path('actualizarPelicula/', views.actualizarPelicula),
     path('eliminarPelicula/<int:id>/', views.eliminarPelicula),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:

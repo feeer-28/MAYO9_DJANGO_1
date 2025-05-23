@@ -1,30 +1,47 @@
-<table class="table table-bordered w-75" style="margin: 0 auto">
-  <thead>
-    <tr>
-      <th>Protagonista</th>
-      <th>Duración</th>
-      <th>Resumen</th>
-      <th>Foto</th>
-      <th>Género</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for p in peliculas %}
-    <tr>
-      <td>{{ p.pelProtagonista }}</td>
-      <td>{{ p.pelDuracion }}</td>
-      <td>{{ p.pelResumen }}</td>
-      <td class="text-center">
-        <img src="/media/{{ p.pelFoto }}" alt="Foto de {{ p.pelTitulo }}" width="50" height="50">
-      </td>
-      <td>{{ p.pelGenero.genNombre }}</td>
-      <td class="text-center">
-        <a href="/consultarPelicula/{{ p.id }}" class="fa fa-edit text-warning" title="Editar"></a>
-        <i class="fa fa-trash text-danger" title="Eliminar"
-           onclick="eliminarPelicula('{{ p.id }}')"></i>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<!-- listarPeliculas.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Películas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    {% load static%}
+    <script src="{% static '../static/js/app.js'%}"></script>
+</head>
+{% include 'encabezado.html'%}
+<body style="background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); min-height: 100vh;">
+    <div class="container">
+        <h2 class="text-center my-4">Listado de Películas</h2>
+        <table class="table table-bordered table-hover bg-white shadow">
+            <thead class="table-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Protagonista</th>
+                    <th>Duración</th>
+                    <th>Género</th>
+                    <th>Foto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in peliculas %}
+                <tr>
+                    <td>{{ p.pelCodigo }}</td>
+                    <td>{{ p.pelTitulo }}</td>
+                    <td>{{ p.pelProtagonista }}</td>
+                    <td>{{ p.pelDuracion }}</td>
+                    <td>{{ p.pelGenero.genNombre }}</td>
+                    <td><img src="/media/{{ p.pelFoto }}" width="60" class="rounded"></td>
+                    <td>
+                        <a href="/consultarPelicula/{{ p.id }}/" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="/eliminarPelicula/{{ p.id }}/" class="btn btn-danger btn-sm"
+                           onclick="return confirm('¿Estás seguro de eliminar esta película?');">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
